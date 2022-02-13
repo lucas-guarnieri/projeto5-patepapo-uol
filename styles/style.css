@@ -46,6 +46,14 @@ body{
     width: 109px;
     font-size: 18px;
     color: #696969;
+    margin-bottom: 20px;
+}
+
+.login-screen span{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    color: black;
 }
 
 .site-header {
