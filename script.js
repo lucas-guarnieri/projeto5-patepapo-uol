@@ -30,7 +30,6 @@ function createUserError(){
 
 function sendUserStatus(){
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/status", chatUser);
-
     promise.then(userStatusSuccess);
     promise.catch(userStatusError);
 }
@@ -39,8 +38,8 @@ function userStatusSuccess(){
     console.log("status sent");
 }
 
-function userStatusError(){
-    console.log("status sending error");
+function userStatusError(error){
+    console.log(error.responce);
     alert("Você foi desconectado. Desculpa, falha nossa ;)");
     document.location.reload();
 }
@@ -89,3 +88,36 @@ function renderMensage(message){
     lastMessage.scrollIntoView();
 
 }
+function sendMessage(){
+    const chatText = document.querySelector(".chat-text").value;
+    const message = {
+        from: chatUser.name,
+        to: "Todos",
+        text: chatText,
+        type: "message"
+    }
+
+    const request = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", message);
+    request.then(requestSuccess);
+    request.catch(requestError);
+}
+
+function requestSuccess(){
+    getMessages();
+    document.querySelector(".chat-text").value = "";
+    
+}
+
+function requestError(error){
+    console.log(error.responce);
+}
+
+/*
+let input = document.querySelector(".chat-text");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.querySelector(".send-button").click();
+  }
+});
+*/
