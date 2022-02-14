@@ -112,7 +112,8 @@ function requestError(error){
     console.log(error.responce);
 }
 
-/*
+
+// código para habilitar envio com tecla enter
 let input = document.querySelector(".chat-text");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -120,4 +121,11 @@ input.addEventListener("keyup", function(event) {
    document.querySelector(".send-button").click();
   }
 });
-*/
+
+let inputEntry = document.querySelector(".user");
+inputEntry.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.querySelector(".enter-button").click();
+  }
+});
