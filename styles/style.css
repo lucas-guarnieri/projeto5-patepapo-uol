@@ -81,6 +81,37 @@ header ion-icon {
     font-size: 50px;
 }
 
+.message-section{
+    box-sizing:border-box;
+    padding: 105px 0;
+}
+
+.message{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 8px;
+    font-size: 14px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    margin: 4px 0;;
+}
+
+.message b{
+    font-weight: bold;
+}
+
+.message span{
+    color: #9B9B9B;
+}
+
+.status{
+    background-color: #DCDCDC;
+}
+
+.private{
+    background-color: #FFDEDE;
+}
+
 .site-footer {
     box-sizing:border-box;
     height: 80px;

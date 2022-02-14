@@ -42,8 +42,7 @@ function userStatusSuccess(){
 function userStatusError(){
     console.log("status sending error");
     alert("Você foi desconectado. Desculpa, falha nossa ;)");
-    clearInterval(statusInterval);
-    window.location.reload();
+    document.location.reload();
 }
 
 function getMessages(){
@@ -67,11 +66,25 @@ function renderChat(){
 
 function renderMensage(message){
     const messageSection = document.querySelector(".message-section");
-    messageSection.innerHTML += `
-    <div class="message" data-identifier="message">
-    (${message.time}) <b>${message.from}</b> para <b>${message.to}</b>: ${message.text}
-    </div>
-    `;
+    if (message.type ==="status"){
+        messageSection.innerHTML += `
+        <div class="message status" data-identifier="message">
+        <span>(${message.time})</span> <b>${message.from}</b> ${message.text}
+        </div>
+        `;
+    }else if(message.type === "private_message" && (message.from === chatUser || message.to === chatUser)){
+        messageSection.innerHTML += `
+        <div class="message private" data-identifier="message">
+        <span>(${message.time})</span> <b>${message.from}</b> reservadamente para <b>${message.to}</b>: ${message.text}
+        </div>
+        `;
+    }else{messageSection.innerHTML += `
+        <div class="message" data-identifier="message">
+        <span>(${message.time})</span> <b>${message.from}</b> para <b>${message.to}</b>: ${message.text}
+        </div>
+        `;
+    }
+ 
     let lastMessage = messageSection.lastElementChild;
     lastMessage.scrollIntoView();
 
