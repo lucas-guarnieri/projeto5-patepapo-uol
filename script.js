@@ -6,7 +6,6 @@ function startChat(){
     getMessages();
     const statusInterval = setInterval(sendUserStatus, 5000);
     const messagesInetval = setInterval(getMessages, 3000);
-
 }
 
 function createUser(){
@@ -14,7 +13,6 @@ function createUser(){
     const newUser = { name: user };
     chatUser = newUser;
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", newUser);
-
     promise.then(createUserSuccess);
     promise.catch(createUserError);
 }
